@@ -19,3 +19,11 @@ jobs:
             echo "::error ::No DAX files found!"
             exit 1
           fi
+- name: Check DAX files are not empty
+  run: |
+    for file in $(find scripts/DAX -name "*.dax"); do
+      if [ ! -s "$file" ]; then
+        echo "::error ::Empty DAX file found: $file"
+        exit 1
+      fi
+    done
