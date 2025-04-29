@@ -1,0 +1,9 @@
+
+VAR SelectedPatient = SELECTEDVALUE(Dim_Patient[Patient_pk])
+VAR StatusFlag = SELECTEDVALUE(Dim_Patient[hospital_expire_flag])
+RETURN 
+    IF(
+        ISBLANK(SelectedPatient),
+        "", 
+        IF(StatusFlag = 1, "Deceased", "Survived")
+    )

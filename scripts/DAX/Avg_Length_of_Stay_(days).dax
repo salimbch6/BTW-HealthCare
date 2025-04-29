@@ -1,0 +1,1 @@
+AVERAGE('Fact_Rentabilité_clinique'[length_of_stay])

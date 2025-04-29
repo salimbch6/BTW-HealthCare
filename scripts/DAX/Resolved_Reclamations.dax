@@ -1,0 +1,5 @@
+
+CALCULATE(
+    DISTINCTCOUNT('Dim_Reclamations'[Reclamation_pk]),
+    Dim_Reclamations[Status] = "Resolved"
+)

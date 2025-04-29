@@ -1,0 +1,12 @@
+
+VAR AlcoholStatus = VALUE(SELECTEDVALUE(Dim_Patient[AlcoholDrinkers]))
+RETURN
+IF(
+    ISBLANK(AlcoholStatus),
+    "🧍 Please select a patient",
+    IF(
+        AlcoholStatus = 1, 
+        "🍷 Consumes alcohol", 
+        "🚱 Does not consume alcohol"
+    )
+)

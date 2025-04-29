@@ -1,0 +1,7 @@
+
+CALCULATE(
+    AVERAGEX(
+        FILTER(Dim_BreastCancer, Dim_BreastCancer[diagnosis] = "0"),
+        VALUE(Dim_BreastCancer[mean_area])
+    )
+)

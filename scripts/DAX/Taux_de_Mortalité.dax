@@ -1,0 +1,12 @@
+
+COALESCE(
+    DIVIDE(
+        CALCULATE(
+            COUNTROWS(Dim_Patient),
+            Dim_Patient[hospital_expire_flag] = 1
+        ),
+        COUNTROWS(Dim_Patient),
+        0
+    ),
+    0
+)

@@ -1,0 +1,3 @@
+
+SUM('Fact_Rentabilité_clinique'[eq_price]) + 
+SUM('Fact_Rentabilité_clinique'[Approximate_Annual_Salary])

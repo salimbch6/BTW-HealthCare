@@ -1,0 +1,5 @@
+
+DIVIDE(
+    CALCULATE(COUNTROWS(Dim_ProstateCancer), Dim_ProstateCancer[Treatment_Recommended] = "Active Surveillance"),
+    COUNTROWS(Dim_ProstateCancer)
+)

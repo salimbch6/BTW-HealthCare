@@ -1,0 +1,12 @@
+
+VAR FemalePatients = 
+    FILTER(
+        Dim_Patient,
+        Dim_Patient[Gender] = "F"
+    )
+RETURN
+    CALCULATE(
+        AVERAGE('Fact_Performance_soins_médicaux'[BMI]),
+        TREATAS(VALUES(Dim_Patient[Patient_pk]), 'Fact_Performance_soins_médicaux'[Patient_fk]),
+        FemalePatients
+    )

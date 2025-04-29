@@ -1,0 +1,33 @@
+
+VAR SelectedDay = SELECTEDVALUE(dim_date[day])
+VAR SelectedMonth = SELECTEDVALUE(Dim_Date[Month])
+
+// 1. Caregivers occupés
+VAR Caregivers_Occupes = 
+    CALCULATE(
+        DISTINCTCOUNT('Fact_Performance_soins_médicaux'[CareGivers_fk]),
+        FILTER(
+            'Fact_Performance_soins_médicaux',
+            MONTH([Admit_Date_fk]) <= SelectedMonth &&
+            DAY([Admit_Date_fk]) <= SelectedDay &&
+            (
+                ISBLANK([Discharge_Date_fk]) || 
+                MONTH([Discharge_Date_fk]) > SelectedMonth ||
+                (MONTH([Discharge_Date_fk]) = SelectedMonth && DAY([Discharge_Date_fk]) >= SelectedDay)
+            )
+        ),
+        USERELATIONSHIP('Fact_Performance_soins_médicaux'[CareGivers_fk], Dim_CareGivers[CareGivers_pk]),
+        USERELATIONSHIP('Fact_Performance_soins_médicaux'[CareUnit_fk], Dim_CareUnits[CareUnit_pk])
+    )
+
+// 2. Total caregivers dans la CareUnit
+VAR Total_Caregivers = 
+    CALCULATE(
+        DISTINCTCOUNT('Fact_Performance_soins_médicaux'[CareGivers_fk]),
+        ALL(dim_date),
+        USERELATIONSHIP('Fact_Performance_soins_médicaux'[CareGivers_fk], Dim_CareGivers[CareGivers_pk]),
+        USERELATIONSHIP('Fact_Performance_soins_médicaux'[CareUnit_fk], Dim_CareUnits[CareUnit_pk])
+    )
+
+RETURN 
+Total_Caregivers - Caregivers_Occupes

@@ -1,0 +1,6 @@
+
+1 - DIVIDE(
+    COUNTROWS(FILTER(Dim_Patient, Dim_Patient[SmokerStatus] = "Never")),
+    COUNTROWS(Dim_Patient),
+    0
+)

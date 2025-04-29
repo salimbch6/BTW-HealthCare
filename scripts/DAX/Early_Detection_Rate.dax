@@ -1,0 +1,5 @@
+
+DIVIDE(
+    CALCULATE(COUNTROWS(Dim_ProstateCancer), Dim_ProstateCancer[Early_Detection] = "Yes"),
+    COUNTROWS(Dim_ProstateCancer)
+)

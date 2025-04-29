@@ -1,0 +1,6 @@
+
+DIVIDE(
+    COUNTROWS(FILTER(Dim_Patient, Dim_Patient[AlcoholDrinkers] = "Oui")),
+    COUNTROWS(Dim_Patient),
+    0
+)

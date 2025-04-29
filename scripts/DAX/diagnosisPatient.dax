@@ -1,0 +1,14 @@
+
+VAR SelectedPatient = SELECTEDVALUE(Dim_Patient[Code_Patient])
+RETURN 
+    IF(
+        ISBLANK(SelectedPatient),
+        "🧍 Please select a patient",
+        CALCULATE(
+            FIRSTNONBLANK(Diagnosis_All[Diagnosis], 1),
+            FILTER(
+                Diagnosis_All,
+                Diagnosis_All[Code_Patient] = SelectedPatient
+            )
+        )
+    )

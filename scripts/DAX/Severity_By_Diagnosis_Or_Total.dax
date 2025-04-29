@@ -1,0 +1,19 @@
+
+VAR SelectedDiagnosis = SELECTEDVALUE(Diagnosis_All[Diagnosis])
+VAR RelatedPatients =
+    CALCULATETABLE(
+        VALUES(Dim_Patient[Patient_pk]),
+        FILTER(Diagnosis_All, Diagnosis_All[Diagnosis] = SelectedDiagnosis)
+    )
+VAR Valu =
+    IF(
+        ISBLANK(SelectedDiagnosis),
+        CALCULATE(SUM('Fact_Performance_soins_médicaux'[severity_score])),
+        CALCULATE(
+            AVERAGE('Fact_Performance_soins_médicaux'[severity_score]),
+            USERELATIONSHIP('Fact_Performance_soins_médicaux'[Patient_fk], Dim_Patient[Patient_pk]),
+            Dim_Patient[Patient_pk] IN RelatedPatients
+        )
+    )
+RETURN
+INT(Valu)

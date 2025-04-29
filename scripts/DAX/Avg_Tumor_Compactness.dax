@@ -1,0 +1,5 @@
+
+AVERAGEX(
+    Dim_BreastCancer,
+    POWER(Dim_BreastCancer[mean_perimeter], 2) / Dim_BreastCancer[mean_area]
+)

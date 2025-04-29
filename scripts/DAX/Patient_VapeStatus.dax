@@ -1,0 +1,14 @@
+
+VAR Vape = SELECTEDVALUE(Dim_Patient[ECigaretteUsage])
+RETURN
+IF(
+    ISBLANK(Vape),
+    "🧍 Please select a patient",
+    SWITCH(
+        Vape,
+        "Never", "💨 Never used",
+        "Not now", "💨 Former user",
+        "Current", "💨 Currently using",
+        "Unknown"
+    )
+)

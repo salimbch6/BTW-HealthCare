@@ -1,0 +1,1 @@
+DISTINCTCOUNT(Dim_Patient_Flux[Patient_flux_pk]) 

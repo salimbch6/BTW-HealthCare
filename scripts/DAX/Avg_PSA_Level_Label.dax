@@ -1,0 +1,3 @@
+
+VAR psaAvg = AVERAGE(Dim_ProstateCancer[PSA_Level])
+RETURN FORMAT(psaAvg, "0.00") & " ng/mL"

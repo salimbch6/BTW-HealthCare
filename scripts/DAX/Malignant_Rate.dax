@@ -1,0 +1,5 @@
+
+DIVIDE(
+    CALCULATE(COUNTROWS(Dim_BreastCancer), Dim_BreastCancer[diagnosis] = "M"),
+    COUNTROWS(Dim_BreastCancer)
+)
