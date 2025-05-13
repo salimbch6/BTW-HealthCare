@@ -1,1 +1,3 @@
 venv_tf/
+venv_tf/
+models/sentiment_model/model.safetensors
