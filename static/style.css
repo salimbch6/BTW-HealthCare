@@ -1,0 +1,99 @@
+/* --- BACKGROUND + BODY --- */
+body {
+    font-family: Arial, sans-serif;
+    background-image: url("background.jpg"); /* ← Assure-toi que le fichier est dans /static */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 40px;
+    min-height: 100vh;
+    backdrop-filter: brightness(0.95);
+}
+
+/* --- TITRE --- */
+h2 {
+    text-align: center;
+    color: #333;
+}
+
+/* --- FORMULAIRE --- */
+form {
+    max-width: 600px;
+    margin: auto;
+    background-color: rgba(255, 255, 255, 0.95); /* semi-transparent */
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.15);
+}
+
+/* --- ÉTIQUETTES ET CHAMPS --- */
+label {
+    font-weight: bold;
+    display: block;
+    margin-top: 10px;
+    color: #444;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    box-sizing: border-box;
+}
+
+/* --- BOUTON SUBMIT --- */
+input[type=submit] {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+input[type=submit]:hover {
+    background-color: #0056b3;
+}
+
+/* --- PRÉDICTION --- */
+.result {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 18px;
+    color: #155724;
+    background-color: #d4edda;
+    padding: 15px;
+    border-radius: 8px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #c3e6cb;
+}
+
+/* --- BARRE DE CHARGEMENT --- */
+#loading-bar-container {
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    margin-top: 20px;
+    height: 20px;
+    overflow: hidden;
+    display: none;
+}
+
+#loading-bar {
+    height: 100%;
+    width: 0%;
+    background-color: #4CAF50;
+    animation: load 5s linear forwards;
+}
+
+@keyframes load {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}

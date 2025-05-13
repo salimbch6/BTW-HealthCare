@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predict Length of Stay</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+    <h2>Predict Length of Stay</h2>
+
+    <form action="/predict" method="post" onsubmit="showLoading(event)">
+        <!-- Groupe de sélection -->
+        <label for="AgeGroup">Age Group:</label>
+        <select name="AgeGroup" id="AgeGroup" required>
+            <option value="">-- Select --</option>
+            <option value="Child">Child</option>
+            <option value="Adult" selected>Adult</option>
+            <option value="Senior">Senior</option>
+        </select>
+
+        <label for="Gender">Gender:</label>
+        <select name="Gender" id="Gender" required>
+            <option value="">-- Select --</option>
+            <option value="M">Male</option>
+            <option value="F" selected>Female</option>
+        </select>
+
+        <label for="AdmissionType">Admission Type:</label>
+        <select name="AdmissionType" id="AdmissionType" required>
+            <option value="">-- Select --</option>
+            <option value="EMERGENCY">Emergency</option>
+            <option value="ELECTIVE">Elective</option>
+            <option value="URGENT">Urgent</option>
+        </select>
+
+        <label for="CareUnit">Care Unit:</label>
+        <select name="CareUnit" id="CareUnit" required>
+            <option value="">-- Select --</option>
+            <option value="MICU" selected>MICU</option>
+            <option value="SICU">SICU</option>
+            <option value="CCU">CCU</option>
+        </select>
+
+        <label for="HadDiabetes">Had Diabetes:</label>
+        <select name="HadDiabetes" id="HadDiabetes" required>
+            <option value="">-- Select --</option>
+            <option value="0" selected>No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="HadStroke">Had Stroke:</label>
+        <select name="HadStroke" id="HadStroke" required>
+            <option value="">-- Select --</option>
+            <option value="0">No</option>
+            <option value="1" selected>Yes</option>
+        </select>
+
+        <label for="DifficultyWalking">Difficulty Walking:</label>
+        <select name="DifficultyWalking" id="DifficultyWalking" required>
+            <option value="">-- Select --</option>
+            <option value="0" selected>No</option>
+            <option value="1">Yes</option>
+        </select>
+
+        <label for="CovidPos">Covid Positive:</label>
+        <select name="CovidPos" id="CovidPos" required>
+            <option value="">-- Select --</option>
+            <option value="0">No</option>
+            <option value="1" selected>Yes</option>
+        </select>
+
+        <!-- Champs numériques -->
+        <label for="procedure_cost">Procedure Cost:</label>
+        <input type="number" name="procedure_cost" id="procedure_cost" min="0" step="0.01" required>
+
+        <label for="medication_cost">Medication Cost:</label>
+        <input type="number" name="medication_cost" id="medication_cost" min="0" step="0.01" required>
+
+        <label for="lab_test_cost">Lab Test Cost:</label>
+        <input type="number" name="lab_test_cost" id="lab_test_cost" min="0" step="0.01" required>
+
+        <input type="submit" value="Predict">
+
+        <!-- Barre de chargement -->
+        <div id="loading-bar-container">
+            <div id="loading-bar"></div>
+        </div>
+    </form>
+
+    {% if prediction %}
+        <div class="result">🧾 Predicted Length of Stay: {{ prediction }} days</div>
+    {% endif %}
+
+    <script>
+        function showLoading(event) {
+            event.preventDefault();
+            const container = document.getElementById('loading-bar-container');
+            const bar = document.getElementById('loading-bar');
+            container.style.display = 'block';
+            bar.style.width = '0%';
+            bar.style.animation = 'load 5s linear forwards';
+            setTimeout(() => {
+                event.target.submit();
+            }, 5000);
+        }
+    </script>
+
+</body>
+</html>

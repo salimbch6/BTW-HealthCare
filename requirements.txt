@@ -1,0 +1,10 @@
+flask
+flask-cors
+ultralytics==8.0.20
+opencv-python
+numpy
+pillow
+scikit-learn
+xgboost
+tensorflow
+joblib
