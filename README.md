@@ -1,6 +1,6 @@
-# 🏥 PatientStayApp – Healthcare Intelligence Platform
+# 🏥 BiTheWay – Healthcare Intelligence Platform
 
-**PatientStayApp** is a full-stack web application designed to assist healthcare decision-makers by providing predictive insights, intelligent dashboards, and operational tools. This platform combines a **Flask backend** with **Angular frontend** and integrates **machine learning** and **deep learning** models to enhance patient care and administrative performance.
+**BiTheWay** is a full-stack web application designed to assist healthcare decision-makers by providing predictive insights, intelligent dashboards, and operational tools. This platform combines a **Flask backend** with **Angular frontend** and integrates **machine learning** and **deep learning** models to enhance patient care and administrative performance.
 
 ---
 
