@@ -1,0 +1,116 @@
+/* 🔷 Main background container */
+.landing-container {
+  position: relative;
+  height: 100vh;
+  width: 100vw;
+  background: url('/assets/mediplus/img/wallpaper.gif') no-repeat center center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+/* 🧭 Centered content block */
+.content {
+  z-index: 2;
+  position: relative;
+  text-align: center;
+  padding-top: 80px; /* pushes all inner content down */
+}
+
+/* 🟦 Get Started Button */
+.get-started {
+  font-size: 24px;
+  margin-top: 20px;
+  padding: 16px 48px;
+  border: none;
+  border-radius: 12px;
+  background-color: #00aaff;
+  color: white;
+  font-weight: 500;
+  font-family: 'Segoe UI', 'Poppins', 'Roboto', sans-serif;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: floatUp 1.5s ease-out 0.4s forwards;
+}
+
+/* 🔵 Button Hover */
+.get-started:hover {
+  background-color: #0077aa;
+  transform: translateY(20px) scale(1.05);
+}
+
+/* 🧊 Welcome to DigiMed block */
+.branding {
+  position: absolute;
+  top: 50px;
+  left: 20px; /* ✅ Adjusted from 60px */
+  font-family: 'Poppins', 'Segoe UI', sans-serif;
+  font-size: 44px;
+  font-weight: 600;
+  color: #ffffff;
+  background: rgba(0, 0, 0, 0.25);
+  padding: 18px 40px;
+  border-radius: 16px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(8px);
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(-30px);
+  animation: slideInTop 1.2s ease-out forwards;
+  letter-spacing: 1.2px;
+  text-shadow: 0 0 10px rgba(0, 170, 255, 0.4);
+}
+
+.branding::after {
+  content: '';
+  display: block;
+  height: 3px;
+  margin-top: 10px;
+  background: linear-gradient(90deg, #00aaff, #ffffff);
+  border-radius: 4px;
+  animation: glowLine 2s ease-in-out infinite alternate;
+}
+
+
+@keyframes glowLine {
+  from { filter: drop-shadow(0 0 4px #00aaff); }
+  to { filter: drop-shadow(0 0 14px #00aaff); }
+}
+
+
+/* ✨ Fade in and float animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeInText {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes floatUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInTop {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.highlight {
+  color: #00aaff;
+  font-size: 48px;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+}
+

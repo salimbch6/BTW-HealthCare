@@ -1,0 +1,17 @@
+/* Make all footer text white */
+.footer {
+  color: white;
+}
+
+.footer h2,
+.footer p,
+.footer li,
+.footer a,
+.footer span {
+  color: white !important;
+}
+
+/* Optional: Make links white even when hovered */
+.footer a:hover {
+  color: white;
+}

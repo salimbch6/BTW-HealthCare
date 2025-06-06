@@ -1,0 +1,133 @@
+/* ✅ MINI HEADER */
+.mini-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fbff;
+    padding: 15px 30px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+
+  .mini-logo {
+    height: 40px;
+  }
+
+  .mini-header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .back-home-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .back-home-btn:hover {
+    background: #0056b3;
+  }
+
+  /* ✅ CONTAINER SENTIMENT */
+  .sentiment-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  .sentiment-container h2 {
+    font-size: 26px;
+    margin-bottom: 30px;
+    color: #333;
+  }
+
+  /* ✅ FORM BOX */
+  .form-box {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  /* ✅ Form Controls */
+  .form-box select,
+  .form-box textarea {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    resize: none;
+    font-family: 'Segoe UI', sans-serif;
+  }
+
+  /* ✅ Submit Button */
+  .form-box button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 12px;
+    font-size: 15px;
+    font-weight: 500;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  .form-box button:hover {
+    background: #0056b3;
+  }
+
+  /* ✅ Prediction Result */
+  .prediction-result {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #28a745; /* Green if positive */
+  }
+
+
+
+  /* 🔹 Navigation links inside header */
+.header .nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px; /* ⬅️ Bigger font */
+  padding: 10px 16px; /* ⬅️ Adds space around */
+}
+
+.header .nav-link:hover {
+  color: #007bff;
+}
+
+/* 🔹 Space between links in navbar */
+.nav.menu,
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* ⬅️ Increased from 20 to 32 for more spacing */
+  list-style: none;
+  padding-left: 0;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  font-family: 'Segoe UI', sans-serif;
+}
+

@@ -1,0 +1,235 @@
+<body>
+    <!-- Preloader -->
+    <div class="preloader">
+        <div class="loader">
+            <div class="loader-outter"></div>
+            <div class="loader-inner"></div>
+
+            <div class="indicator"> 
+                <svg width="16px" height="12px">
+                    <polyline id="back" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                    <polyline id="front" points="1 6 4 6 6 11 10 1 12 6 15 6"></polyline>
+                </svg>
+            </div>
+        </div>
+    </div>
+   
+      
+      <!-- ✅ Proper Topbar Row (same row, spaced left/right) -->
+      <div class="topbar bg-white py-2 border-bottom">
+        <div class="container-fluid px-4">
+          <div class="d-flex justify-content-between align-items-center">
+      
+            <!-- 🔹 LEFT: Contact Info -->
+            <div class="topbar-left d-flex align-items-center gap-4">
+              <span><i class="fa fa-phone me-1"></i> +216 72274502</span>
+              <span><i class="fa fa-envelope me-1"></i> support@BiTheWay.com</span>
+            </div>
+      
+            <!-- 🔹 RIGHT: User Info + Logout -->
+            <div class="topbar-right d-flex align-items-center gap-3">
+              <span class="text-dark">
+                <i class="fa fa-user"></i> {{ username }} | <strong>{{ role }}</strong>
+              </span>
+              <button class="btn btn-sm btn-primary" (click)="logout()">Logout</button>
+            </div>
+      
+          </div>
+        </div>
+      </div>
+      
+      
+      
+      <header class="header">
+        <div class="header-inner py-2">
+          <div class="container">
+            <div class="d-flex justify-content-between align-items-center">
+      
+              <!-- 🔹 Left: Logo + BI the Way -->
+              <div class="d-flex align-items-center">
+                <a [routerLink]="role === 'admin' ? '/home-admin' : '/home-head'" class="d-flex align-items-center text-decoration-none">
+                  <img src="assets/images/logo.jpeg" alt="Logo" style="height: 45px;">
+                  <h4 class="ms-2 mb-0 text-dark">BI the Way</h4>
+                </a>
+              </div>
+      
+              <!-- 🔹 Center: Role-Based Navigation Menu -->
+              <div class="flex-grow-1">
+                <nav class="navigation d-flex justify-content-center">
+                  <ul class="nav menu d-flex align-items-center gap-4 mb-0">
+      
+                    <!-- ✅ Admin Menu -->
+                    <ng-container *ngIf="role === 'admin'">
+                      <li routerLinkActive="active">
+                        <a routerLink="/home-admin">Home</a>
+                      </li>
+                       <li>
+                <a href="#">Prediction Models <i class="icofont-rounded-down"></i></a>
+                <ul class="dropdown">
+                  <li><a routerLink="/patientstay">Length of Stay</a></li>
+                  <li><a routerLink="/stroke">Brain Stroke</a></li>
+                  <li><a routerLink="/prostate">Prostate Cancer</a></li>
+                  <li><a routerLink="/breast">Breast Cancer</a></li>
+                  <li >
+                    <a routerLink="/tracking">Staff Tracking</a>
+                  </li>
+
+                </ul>
+              </li>
+              <li routerLinkActive="active">
+                <a routerLink="/dashboard">Dashboard</a>
+              </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="/contact">Contact</a>
+                      </li>
+                    </ng-container>
+      
+                    <!-- ✅ Head of Service Menu -->
+                    <ng-container *ngIf="role === 'head'">
+                      <li routerLinkActive="active">
+                        <a routerLink="/home-head">Home</a>
+                      </li>
+                      <li>
+                        <a href="#">Prediction Models <i class="icofont-rounded-down"></i></a>
+                        <ul class="dropdown">
+                          <li><a routerLink="/patientstay">Length of Stay</a></li>
+                          <li><a routerLink="/sentiment">Sentiment</a></li>
+                          <li><a routerLink="/stroke">Stroke Risk</a></li>
+                          <li><a routerLink="/prostate">Prostate Cancer</a></li>
+                          <li><a routerLink="/breast">Breast Cancer</a></li>
+                        </ul>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="/dashboard">Dashboard</a>
+                      </li>
+                      <li routerLinkActive="active">
+                        <a routerLink="/contact">Contact</a>
+                      </li>
+                    </ng-container>
+      
+                  </ul>
+                </nav>
+              </div>
+      
+            </div>
+          </div>
+        </div>
+      </header>
+      
+
+   <!-- 3D Anatomy Viewer Section -->
+<section class="section anatomy-viewer py-5" id="biodigital-viewer" style="background-color: #f9fafa;">
+  <div class="container">
+    <div class="card shadow-sm border-0 rounded-4">
+      <div class="card-body p-4">
+        <h2 class="text-center mb-4 text-primary fw-bold" style="font-size: 1.8rem;">
+          🧠 Male Complete Anatomy Viewer
+        </h2>
+        <div class="ratio ratio-16x9 rounded overflow-hidden" style="height: 600px;">
+          <iframe 
+            title="BioDigital Human Viewer"
+            src="https://human.biodigital.com/widget/?be=2PcB&background.colors=0,0,0,1,0,0,0,1&initial.hand-hint=true&ui-fullscreen=true&ui-center=false&ui-dissect=true&ui-zoom=true&ui-help=true&ui-tools-display=primary&ui-info=true&uaid=3YfOR"
+            style="width: 100%; height: 100%; border: none;"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+  
+
+
+
+    <!-- End Breadcrumbs -->
+            
+    
+    
+    <!-- Footer Area -->
+    <footer id="footer" class="footer ">
+        <!-- Footer Top -->
+        <div class="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer">
+                            <h2>About Us</h2>
+                            <p>Lorem ipsum dolor sit am consectetur adipisicing elit do eiusmod tempor incididunt ut labore dolore magna.</p>
+                            <!-- Social -->
+                            <ul class="social">
+                                <li><a href="#"><i class="icofont-facebook"></i></a></li>
+                                <li><a href="#"><i class="icofont-google-plus"></i></a></li>
+                                <li><a href="#"><i class="icofont-twitter"></i></a></li>
+                                <li><a href="#"><i class="icofont-vimeo"></i></a></li>
+                                <li><a href="#"><i class="icofont-pinterest"></i></a></li>
+                            </ul>
+                            <!-- End Social -->
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer f-link">
+                            <h2>Quick Links</h2>
+                            <div class="row">
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Home</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>About Us</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Services</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Our Cases</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Other Links</a></li>	
+                                    </ul>
+                                </div>
+                                <div class="col-lg-6 col-md-6 col-12">
+                                    <ul>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Consuling</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Finance</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Testimonials</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>FAQ</a></li>
+                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contact Us</a></li>	
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer">
+                            <h2>Open Hours</h2>
+                            <p>Lorem ipsum dolor sit ame consectetur adipisicing elit do eiusmod tempor incididunt.</p>
+                            <ul class="time-sidual">
+                                <li class="day">Monday - Fridayp <span>8.00-20.00</span></li>
+                                <li class="day">Saturday <span>9.00-18.30</span></li>
+                                <li class="day">Monday - Thusday <span>9.00-15.00</span></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-12">
+                        <div class="single-footer">
+                            <h2>Newsletter</h2>
+                            <p>subscribe to our newsletter to get allour news in your inbox.. Lorem ipsum dolor sit amet, consectetur adipisicing elit,</p>
+                            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+                                <input name="email" placeholder="Email Address" class="common-input" onfocus="this.placeholder = ''"
+                                    onblur="this.placeholder = 'Your email address'" required="" type="email">
+                                <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Footer Top -->
+        <!-- Copyright -->
+        <div class="copyright">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12 col-md-12 col-12">
+                        <div class="copyright-content">
+                            <p>© Copyright 2018  |  All Rights Reserved by <a href="https://www.wpthemesgrid.com" target="_blank">wpthemesgrid.com</a> </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--/ End Copyright -->
+    </footer>
+    <!--/ End Footer Area -->

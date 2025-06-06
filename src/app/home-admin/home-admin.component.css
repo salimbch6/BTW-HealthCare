@@ -1,0 +1,234 @@
+.welcome-container {
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  height: 30px; /* optional: fix height */
+}
+
+.welcome-text {
+  display: inline-block;
+  white-space: nowrap;
+  color: #007bff;
+  font-weight: bold;
+  font-size: 20px;
+  animation: marqueeX 8s linear infinite;
+  position: absolute;
+}
+
+@keyframes marqueeX {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+/* Fluid animation for card rotation */
+.article-slider {
+  position: relative;
+  overflow: hidden;
+}
+
+/* Fade in effect */
+.animate-fade {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeSlideIn 0.8s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Smooth card hover effect */
+.transition-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.transition-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+/* Base container */
+.blog-slider-container {
+  position: relative;
+}
+
+/* Clean nav buttons */
+.nav-button.clean-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  color: #0d6efd;
+  font-size: 2rem;
+  padding: 4px 12px;
+  z-index: 10;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.nav-button.clean-nav:hover {
+  color: #084298; /* darker blue */
+}
+
+/* Positioning */
+.left-nav {
+  left: -10px;
+}
+
+.right-nav {
+  right: -10px;
+}
+/* Position container */
+.blog-slider-container {
+  position: relative;
+}
+
+/* Circular nav button design */
+.nav-button.circle-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #0d6efd; /* Bootstrap primary blue */
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.nav-button.circle-nav:hover {
+  background-color: #0b5ed7; /* darker blue on hover */
+}
+
+/* Positioning */
+.left-nav {
+  left: -20px;
+}
+
+.right-nav {
+  right: -20px;
+}
+.blog-slider-container {
+  position: relative;
+}
+
+.nav-button.circle-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: #0d6efd;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  z-index: 10;
+}
+
+.nav-button.circle-nav:hover {
+  background-color: #0b5ed7;
+}
+
+.left-nav {
+  left: -20px;
+}
+
+.right-nav {
+  right: -20px;
+}
+
+/* Equal height + spacing fix */
+.card-body-flex {
+  height: 100%;
+}
+
+.news-body {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.news-content {
+  flex-grow: 1;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+/* Slide animations */
+.slide-left {
+  animation: slideLeft 0.5s ease-in-out;
+}
+
+.slide-right {
+  animation: slideRight 0.5s ease-in-out;
+}
+
+@keyframes slideLeft {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideRight {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.anatomy-viewer {
+  padding: 80px 0;
+}
+
+.anatomy-viewer .section-title {
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.anatomy-viewer iframe {
+  width: 100%;
+  height: 600px;
+  border-radius: 12px;
+}

@@ -1,0 +1,157 @@
+/* ✅ Header compact avec fond blanc */
+.header {
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.header-inner .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0; /* hauteur réduite */
+}
+
+/* ✅ Logo à l'extrême gauche */
+.logo-area {
+  display: flex;
+  align-items: center;
+  margin-right: 20  px;
+  margin-left: 0px;
+}
+
+/* ✅ Menu centré entre logo et bouton */
+nav {
+  flex-grow: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.nav.menu {
+  display: flex;
+  align-items: center;
+  gap: 60px; /* espacement augmenté */
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+}
+
+/* ✅ Liens plus grands */
+.nav-link {
+  font-size: 18px;
+  font-weight: 600;
+  color: #222;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #007bff;
+}
+
+/* ✅ Dropdown */
+.dropdown ul {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background-color: white;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  padding: 0;
+  border-radius: 4px;
+  list-style: none;
+  z-index: 1000;
+  min-width: 200px;
+}
+
+.dropdown:hover ul {
+  display: block;
+}
+
+.dropdown ul li {
+  border-bottom: 1px solid #eee;
+}
+
+.dropdown ul li:last-child {
+  border-bottom: none;
+}
+
+.dropdown ul li a {
+  color: #525252;
+  text-decoration: none;
+  padding: 12px 16px;
+  display: block;
+  font-weight: 400;
+  font-size: 13px;
+}
+
+.dropdown ul li a:hover {
+  background-color: #f8f9fa;
+  color: #007bff;
+}
+
+/* ✅ Bouton à l'extrême droite */
+.header-inner .btn-sm {
+  margin-left: auto;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+  /* 🔹 Navigation links inside header */
+.header .nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px; /* ⬅️ Bigger font */
+  padding: 10px 16px; /* ⬅️ Adds space around */
+}
+
+.header .nav-link:hover {
+  color: #007bff;
+}
+
+/* 🔹 Space between links in navbar */
+.nav.menu,
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* ⬅️ Increased from 20 to 32 for more spacing */
+  list-style: none;
+  padding-left: 0;
+}
+
+
+
+/* Make all footer text white */
+.footer {
+  color: white;
+}
+
+.footer h2,
+.footer p,
+.footer li,
+.footer a,
+.footer span {
+  color: white !important;
+}
+
+/* Optional: Make links white even when hovered */
+.footer a:hover {
+  color: white;
+}
+
+/* ✅ Force all form labels to black */
+.form-container label {
+  color: #000 !important;
+  font-weight: 600;
+}

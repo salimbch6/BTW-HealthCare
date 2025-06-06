@@ -1,0 +1,168 @@
+/* ✅ Mini Header Style */
+.mini-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fbff;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.mini-logo {
+  height: 40px;
+}
+
+/* ✅ Bouton à droite */
+.mini-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.back-home-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.back-home-btn:hover {
+  background: #0056b3;
+}
+
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f5f7fa;
+    padding: 20px;
+  }
+
+  .navbar {
+    background-color: #0077cc;
+    padding: 15px;
+    text-align: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 20px;
+    color: #333;
+  }
+
+  .upload-section {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .upload-section form {
+    display: inline-block;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+
+  .upload-section input[type="file"] {
+    margin-bottom: 15px;
+  }
+
+  .upload-section button {
+    background-color: #0077cc;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+
+  .upload-section button:hover {
+    background-color: #005fa3;
+  }
+
+  .gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+  }
+
+  .video-card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    overflow: hidden;
+    width: 320px;
+    transition: transform 0.3s ease;
+  }
+
+  .video-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+  }
+
+  video {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .video-info {
+    padding: 10px;
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    word-break: break-word;
+  }
+
+  #spinner {
+    margin-top: 20px;
+  }
+
+  #spinner img {
+    width: 60px;
+  }
+
+
+  /* 🔹 Navigation links inside header */
+.header .nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px; /* ⬅️ Bigger font */
+  padding: 10px 16px; /* ⬅️ Adds space around */
+}
+
+.header .nav-link:hover {
+  color: #007bff;
+}
+
+/* 🔹 Space between links in navbar */
+.nav.menu,
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* ⬅️ Increased from 20 to 32 for more spacing */
+  list-style: none;
+  padding-left: 0;
+}
+
+.form-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  font-family: 'Segoe UI', sans-serif;
+}

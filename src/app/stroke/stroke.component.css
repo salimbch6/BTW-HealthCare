@@ -1,0 +1,165 @@
+/* ✅ MINI HEADER */
+.mini-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8fbff;
+    padding: 15px 30px;
+    border-bottom: 1px solid #ddd;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+  }
+
+  .mini-logo {
+    height: 40px;
+  }
+
+  .mini-header-right {
+    display: flex;
+    align-items: center;
+  }
+
+  .back-home-btn {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 8px;
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background 0.3s;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+  }
+
+  .back-home-btn:hover {
+    background: #0056b3;
+  }
+
+  /* ✅ Container principal */
+  .sentiment-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 20px;
+    text-align: center;
+  }
+
+  /* ✅ Stroke Container */
+  .stroke-container {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .stroke-container h2 {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+
+  /* ✅ File input */
+  .stroke-container input[type="file"] {
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    cursor: pointer;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  /* ✅ Predict button */
+/* ✅ Predict button */
+.stroke-container button {
+  background: #007bff;  /* 🔹 même bleu que "Upload a Stroke" */
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+/* Quand désactivé */
+.stroke-container button:disabled {
+  background: #0056b3;  /* 🔸 gris clair pour désactivation */
+  cursor: not-allowed;
+}
+
+/* Au survol (hover), sauf désactivé */
+.stroke-container button:hover:not(:disabled) {
+  background: #0056b3;  /* 🔹 même hover que "Upload a Stroke" */
+}
+
+
+  /* ✅ Result */
+  .stroke-container h3 {
+    font-size: 18px;
+    font-weight: 600;
+    color: #28a745;
+  }
+
+
+  .custom-upload-btn {
+  display: inline-block;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+  margin-top: 20px;
+  position: relative;
+  overflow: hidden;
+}
+
+.custom-upload-btn:hover {
+  background-color: #6e6e6e;
+}
+
+/* Cache complètement le champ input mais garde sa fonctionnalité */
+.custom-upload-btn input[type="file"] {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+
+
+  /* 🔹 Navigation links inside header */
+.header .nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px; /* ⬅️ Bigger font */
+  padding: 10px 16px; /* ⬅️ Adds space around */
+}
+
+.header .nav-link:hover {
+  color: #007bff;
+}
+
+/* 🔹 Space between links in navbar */
+.nav.menu,
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* ⬅️ Increased from 20 to 32 for more spacing */
+  list-style: none;
+  padding-left: 0;
+}
+.header {
+  background-color: white;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+}

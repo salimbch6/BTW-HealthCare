@@ -1,0 +1,235 @@
+html : 
+<!-- ✅ Topbar identique -->
+<div class="topbar bg-white py-2 border-bottom">
+  <div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="topbar-left d-flex align-items-center gap-4">
+
+      </div>
+      <div class="topbar-right d-flex align-items-center gap-3">
+        <span class="text-dark">
+          <i class="fa fa-user"></i> {{ username }} | <strong>{{ role }}</strong>
+        </span>
+        <button class="btn btn-sm btn-primary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ✅ Header section -->
+<header class="header border-bottom">
+  <div class="header-inner py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <!-- 🔹 Logo -->
+      <div class="logo-area d-flex align-items-center">
+        <a routerLink="/home-admin" class="d-flex align-items-center text-decoration-none">
+          <img src="assets/images/logo.jpeg" alt="Logo" style="height: 45px;">
+          <h4 class="ms-2 mb-0 text-dark fw-bold">BI the Way</h4>
+        </a>
+      </div>
+
+      <!-- 🔹 Navigation -->
+      <nav class="flex-grow-1 d-flex justify-content-center">
+        <ul class="nav d-flex align-items-center gap-5 mb-0 list-unstyled fw-semibold">
+          <li routerLinkActive="active"><a routerLink="/home-head" class="nav-link">Home</a></li>
+          <li class="dropdown">
+            <a href="#" class="nav-link">Prediction Models <i class="icofont-rounded-down"></i></a>
+            <ul class="dropdown">
+              <li><a routerLink="/patientstay">Length of Stay</a></li>
+              <li><a routerLink="/stroke">Brain Stroke</a></li>
+              <li><a routerLink="/prostate">Prostate Cancer</a></li>
+              <li><a routerLink="/breast">Breast Cancer</a></li>
+            </ul>
+          </li>
+          <li routerLinkActive="active"><a routerLink="/dashboard" class="nav-link">Dashboard</a></li>
+          <li routerLinkActive="active"><a routerLink="/contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- 🔹 Back Button -->
+      <div>
+        <button class="btn btn-primary btn-sm" routerLink="/home-head">← Back To Home</button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+  <div class="container">
+      <div class="bread-inner">
+          <div class="row">
+              <div class="col-12">
+                  <h2>Breast Cancer Model</h2>
+                  <ul class="bread-list">
+                    <li><a routerLink="/home-head">Home</a></li>
+
+                      <li><i class="icofont-simple-right"></i></li>
+                      <li class="active">Breast Cancer </li>
+                  </ul>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+<div class="form-container">
+
+
+  <h2>Breast Cancer Prediction</h2>
+
+  <form (ngSubmit)="onSubmit()" #breastForm="ngForm" class="form-card">
+
+  <div class="form-group">
+    <label>Mean Radius:</label>
+    <input type="number" name="mean_radius" [(ngModel)]="formData.mean_radius" required />
+    <small class="text-muted">Average radius of the tumor.</small>
+  </div>
+
+  <div class="form-group">
+    <label>Mean Texture:</label>
+    <input type="number" name="mean_texture" [(ngModel)]="formData.mean_texture" required />
+    <small class="text-muted">Average texture of the tumor.</small>
+  </div>
+
+  <div class="form-group">
+    <label>Mean Perimeter:</label>
+    <input type="number" name="mean_perimeter" [(ngModel)]="formData.mean_perimeter" required />
+    <small class="text-muted">Average perimeter of the tumor.</small>
+  </div>
+
+  <div class="form-group">
+    <label>Mean Area:</label>
+    <input type="number" name="mean_area" [(ngModel)]="formData.mean_area" required />
+    <small class="text-muted">Average surface area covered by the tumor.</small>
+  </div>
+
+  <div class="form-group">
+    <label>Mean Smoothness:</label>
+    <input type="number" name="mean_smoothness" [(ngModel)]="formData.mean_smoothness" required />
+    <small class="text-muted">Average smoothness of the tumor.</small>
+  </div>
+
+  <button type="submit" class="predict-btn">Predict</button>
+  <div class="interpretation-box mt-4 px-4 py-3 rounded bg-light">
+  <h5 class="text-dark mb-3">Interpretation of Prediction</h5>
+  <p class="text-muted">
+    This model predicts whether the tumor is <strong>Benign</strong> (non-cancerous) or <strong>Malignant</strong> (cancerous) using structural characteristics.
+  </p>
+  <ul class="text-muted mb-2">
+    <li><strong>High Perimeter</strong> and <strong>Mean Area</strong> are often linked with <strong>malignant tumors</strong>, as they tend to grow irregularly and occupy more space.</li>
+    <li><strong>Mean Radius</strong> and <strong>Mean Texture</strong> help the model assess how consistent or dense the tumor is — sharp variations can suggest malignancy.</li>
+    <li><strong>Mean Smoothness</strong> reflects the tumor edge: rougher borders may indicate cancerous patterns, while smoother shapes are more often benign.</li>
+  </ul>
+
+</div>
+
+  <div *ngIf="prediction" class="result">
+    🧬 Prediction Result: <strong>{{ prediction }}</strong>
+  </div>
+
+  <div *ngIf="error" class="error">
+    ❌ {{ error }}
+  </div>
+
+</form>
+
+</div>
+
+<!-- Footer Area -->
+<footer id="footer" class="footer">
+  <!-- Footer Top -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <!-- 🔹 About Us -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer">
+            <h2>About BI the Way</h2>
+            <p>We empower healthcare leaders with real-time dashboards, predictive insights, and integrated AI models — driving smarter, faster decisions every day.</p>
+            <!-- Social -->
+            <ul class="social">
+              <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+              <li><a href="#"><i class="icofont-twitter"></i></a></li>
+              <li><a href="#"><i class="icofont-envelope"></i></a></li>
+              <li><a href="#"><i class="icofont-youtube"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 🔹 Quick Links -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer f-link">
+            <h2>Quick Access</h2>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-12">
+                <ul>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Home</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Dashboard</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Predictive Models</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Patient KPIs</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Data Sources</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <ul>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Performance</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Financial View</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Support</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>FAQ</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🔹 Open Hours -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer">
+            <h2>Platform Access</h2>
+            <p>Our BI platform is available 24/7 with secure access for decision-makers and authorized staff.</p>
+            <ul class="time-sidual">
+              <li class="day">Weekdays <span>24h Access</span></li>
+              <li class="day">Weekends <span>24h Access</span></li>
+              <li class="day">Support <span>Mon–Fri, 9:00–17:00</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 🔹 Newsletter -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer">
+            <h2>Newsletter</h2>
+            <p>Subscribe to receive product updates, healthcare analytics insights, and ML model improvements directly to your inbox.</p>
+            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+              <input name="email" placeholder="Email Address" class="common-input"
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'" required="" type="email">
+              <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
+          <div class="copyright-content">
+            <p>© 2025 BI the Way — Powered by Health Intelligence and Human Insight.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>

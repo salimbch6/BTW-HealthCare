@@ -1,0 +1,203 @@
+/* ✅ MINI HEADER */
+.mini-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fbff;
+  padding: 15px 30px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.mini-logo {
+  height: 40px;
+}
+
+.mini-header-right {
+  display: flex;
+  align-items: center;
+}
+
+.back-home-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.3s;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.back-home-btn:hover {
+  background: #0056b3;
+}
+
+/* ✅ Main container */
+.form-container {
+  max-width: 700px;
+  margin: 50px auto;
+  background-color: #ffffff;
+  padding: 40px;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.07);
+  font-family: 'Segoe UI', sans-serif;
+}
+
+
+/* ✅ Form card */
+.form-card {
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* ✅ Form title */
+.container h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* ✅ Form group styling */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.form-group label {
+  font-weight: 500;
+  margin-bottom: 5px;
+  color: #444;
+}
+
+.form-group input {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  background: #f9f9f9;
+  transition: border 0.3s;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #007bff;
+}
+
+/* ✅ Predict button */
+.predict-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 15px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.12);
+}
+
+.predict-btn:hover {
+  background: #0056b3;
+}
+
+/* ✅ Result styling */
+.result {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #28a745;
+  font-weight: bold;
+}
+
+/* ✅ Error message */
+.error {
+  margin-top: 20px;
+  font-size: 15px;
+  color: #dc3545;
+}
+.nav > li {
+  list-style: none;
+}
+
+.nav-link {
+  padding: 8px 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  text-decoration: underline;
+}
+
+.dropdown ul {
+  display: none;
+  position: absolute;
+  background: white;
+  padding: 10px;
+  list-style: none;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown:hover ul {
+  display: block;
+}
+
+
+
+  /* 🔹 Navigation links inside header */
+.header .nav-link {
+  color: #333;
+  text-decoration: none;
+  font-size: 15px; /* ⬅️ Bigger font */
+  padding: 10px 16px; /* ⬅️ Adds space around */
+}
+
+.header .nav-link:hover {
+  color: #007bff;
+}
+
+/* 🔹 Space between links in navbar */
+.nav.menu,
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 32px; /* ⬅️ Increased from 20 to 32 for more spacing */
+  list-style: none;
+  padding-left: 0;
+}
+
+
+
+
+
+/* Make all footer text white */
+.footer {
+  color: white;
+}
+
+.footer h2,
+.footer p,
+.footer li,
+.footer a,
+.footer span {
+  color: white !important;
+}
+
+/* Optional: Make links white even when hovered */
+.footer a:hover {
+  color: white;
+}
+
+.breadcrumbs h2 {
+  color: white !important;
+}

@@ -1,0 +1,315 @@
+<!-- ✅ Topbar identique -->
+<div class="topbar bg-white py-2 border-bottom">
+  <div class="container-fluid px-4">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="topbar-left d-flex align-items-center gap-4">
+
+      </div>
+      <div class="topbar-right d-flex align-items-center gap-3">
+        <span class="text-dark">
+          <i class="fa fa-user"></i> {{ username }} | <strong>{{ role }}</strong>
+        </span>
+        <button class="btn btn-sm btn-primary" (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- ✅ Header section -->
+<header class="header border-bottom">
+  <div class="header-inner py-2">
+    <div class="container d-flex justify-content-between align-items-center">
+
+      <!-- 🔹 Logo -->
+      <div class="logo-area d-flex align-items-center">
+        <a routerLink="/home-admin" class="d-flex align-items-center text-decoration-none">
+          <img src="assets/images/logo.jpeg" alt="Logo" style="height: 45px;">
+          <h4 class="ms-2 mb-0 text-dark fw-bold">BI the Way</h4>
+        </a>
+      </div>
+
+      <!-- 🔹 Navigation -->
+      <nav class="flex-grow-1 d-flex justify-content-center">
+        <ul class="nav d-flex align-items-center gap-5 mb-0 list-unstyled fw-semibold">
+          <li routerLinkActive="active"><a [routerLink]="homeLink" class="nav-link">Home</a></li>
+
+          <!-- 🔻 Prediction Models (role-based) -->
+          <li class="dropdown">
+            <a href="#" class="nav-link">Prediction Models <i class="icofont-rounded-down"></i></a>
+            <ul class="dropdown">
+              <li><a routerLink="/patientstay">Length of Stay</a></li>
+              <ng-container *ngIf="role === 'admin'">
+                <li><a routerLink="/sentiment">Sentiment</a></li>
+                <li><a routerLink="/tracking">Staff Tracking</a></li>
+              </ng-container>
+              <ng-container *ngIf="role === 'head'">
+                <li><a routerLink="/breast">Breast Cancer</a></li>
+                <li><a routerLink="/prostate">Prostate Cancer</a></li>
+                <li><a routerLink="/stroke">Brain Stroke</a></li>
+              </ng-container>
+            </ul>
+          </li>
+
+          <li routerLinkActive="active"><a routerLink="/dashboard" class="nav-link">Dashboard</a></li>
+          <li routerLinkActive="active"><a routerLink="/contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+
+      <!-- 🔹 Back Button (role-based routing) -->
+      <div>
+        <button class="btn btn-primary btn-sm" [routerLink]="homeLink">← Back To Home</button>
+      </div>
+
+    </div>
+  </div>
+</header>
+
+
+
+
+<!-- Breadcrumbs -->
+<div class="breadcrumbs overlay">
+  <div class="container">
+      <div class="bread-inner">
+          <div class="row">
+              <div class="col-12">
+                 <h2>Length of stay Model</h2>
+<ul class="bread-list">
+  <li><a [routerLink]="homeLink">Home</a></li>
+  <li><i class="icofont-simple-right"></i></li>
+  <li class="active">Length of stay</li>
+</ul>
+
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+<div class="form-container">
+  <h2>Predict Length of Stay</h2>
+  <form (ngSubmit)="predictStay()" #stayForm="ngForm" class="form-card">
+
+    <div class="form-group">
+      <label>Age Group:</label>
+      <select [(ngModel)]="formData['AgeGroup']" name="AgeGroup" required>
+        <option value="">-- Select --</option>
+        <option value="Adult">Adult</option>
+        <option value="Senior">Senior</option>
+      </select>
+      <small class="text-muted">Select whether the patient is an adult or senior.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Gender:</label>
+      <select [(ngModel)]="formData['Gender']" name="Gender" required>
+        <option value="">-- Select --</option>
+        <option value="M">Male</option>
+        <option value="F">Female</option>
+      </select>
+      <small class="text-muted">Specify the patient's gender.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Admission Type:</label>
+      <select [(ngModel)]="formData['AdmissionType']" name="AdmissionType" required>
+        <option value="">-- Select --</option>
+        <option value="EMERGENCY">Emergency</option>
+        <option value="ELECTIVE">Elective</option>
+        <option value="URGENT">Urgent</option>
+      </select>
+      <small class="text-muted">Indicates the urgency of the patient's admission.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Care Unit:</label>
+      <select [(ngModel)]="formData['CareUnit']" name="CareUnit" required>
+        <option value="">-- Select --</option>
+        <option value="MICU">MICU</option>
+        <option value="SICU">SICU</option>
+        <option value="CCU">CCU</option>
+      </select>
+      <small class="text-muted">Choose the medical care unit where the patient is treated.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Had Diabetes:</label>
+      <select [(ngModel)]="formData['HadDiabetes']" name="HadDiabetes" required>
+        <option value="">-- Select --</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+      <small class="text-muted">Indicate if the patient has a history of diabetes.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Had Stroke:</label>
+      <select [(ngModel)]="formData['HadStroke']" name="HadStroke" required>
+        <option value="">-- Select --</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+      <small class="text-muted">Indicate if the patient has suffered a stroke previously.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Difficulty Walking:</label>
+      <select [(ngModel)]="formData['DifficultyWalking']" name="DifficultyWalking" required>
+        <option value="">-- Select --</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+      <small class="text-muted">Indicate whether the patient has walking difficulties.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Covid Positive:</label>
+      <select [(ngModel)]="formData['CovidPos']" name="CovidPos" required>
+        <option value="">-- Select --</option>
+        <option value="0">No</option>
+        <option value="1">Yes</option>
+      </select>
+      <small class="text-muted">Specify if the patient is COVID-19 positive.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Procedure Cost:</label>
+      <input type="number" [(ngModel)]="formData['procedure_cost']" name="procedure_cost" min="0" step="0.01" required />
+      <small class="text-muted">Cost of the medical procedures performed (in local currency).</small>
+    </div>
+
+    <div class="form-group">
+      <label>Medication Cost:</label>
+      <input type="number" [(ngModel)]="formData['medication_cost']" name="medication_cost" min="0" step="0.01" required />
+      <small class="text-muted">Total cost of medications prescribed during stay.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Lab Test Cost:</label>
+      <input type="number" [(ngModel)]="formData['lab_test_cost']" name="lab_test_cost" min="0" step="0.01" required />
+      <small class="text-muted">Total cost for lab tests done during hospitalization.</small>
+    </div>
+
+    <button type="submit" class="predict-btn">Predict</button>
+
+    <div *ngIf="showResult && prediction !== null" class="result">
+      🧾 Predicted Length of Stay: {{ prediction }} days
+    </div>
+
+
+
+  </form>
+
+
+  <!-- 🔹 Interpretation Section -->
+  <div class="result-interpretation bg-light p-4 rounded shadow-sm" style="flex-basis: 35%;">
+    <h5 class="text-dark mb-3">How to interpret the result</h5>
+    <ul class="text-muted small">
+      <li><strong>0–2 days</strong>: Short stay — minor procedure or rapid recovery.</li>
+      <li><strong>3–5 days</strong>: Moderate stay — typical for standard treatment.</li>
+      <li><strong>6–10 days</strong>: Long stay — may require extended care or monitoring.</li>
+      <li><strong>11+ days</strong>: Very long stay — often due to complications or serious conditions.</li>
+    </ul>
+    <p class="text-muted mb-0">Always refer to clinical context when assessing length of stay.</p>
+  </div>
+
+
+</div>
+
+
+
+<footer id="footer" class="footer">
+  <!-- Footer Top -->
+  <div class="footer-top">
+    <div class="container">
+      <div class="row">
+        <!-- 🔹 About Us -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer">
+            <h2>About BI the Way</h2>
+            <p>We empower healthcare leaders with real-time dashboards, predictive insights, and integrated AI models — driving smarter, faster decisions every day.</p>
+            <!-- Social -->
+            <ul class="social">
+              <li><a href="#"><i class="icofont-linkedin"></i></a></li>
+              <li><a href="#"><i class="icofont-twitter"></i></a></li>
+              <li><a href="#"><i class="icofont-envelope"></i></a></li>
+              <li><a href="#"><i class="icofont-youtube"></i></a></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 🔹 Quick Links -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer f-link">
+            <h2>Quick Access</h2>
+            <div class="row">
+              <div class="col-lg-6 col-md-6 col-12">
+                <ul>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Home</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Dashboard</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Predictive Models</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Patient KPIs</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Data Sources</a></li>
+                </ul>
+              </div>
+              <div class="col-lg-6 col-md-6 col-12">
+                <ul>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Performance</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Financial View</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Support</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>FAQ</a></li>
+                  <li><a href="#"><i class="fa fa-caret-right"></i>Contact</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 🔹 Open Hours -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer">
+            <h2>Platform Access</h2>
+            <p>Our BI platform is available 24/7 with secure access for decision-makers and authorized staff.</p>
+            <ul class="time-sidual">
+              <li class="day">Weekdays <span>24h Access</span></li>
+              <li class="day">Weekends <span>24h Access</span></li>
+              <li class="day">Support <span>Mon–Fri, 9:00–17:00</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 🔹 Newsletter -->
+        <div class="col-lg-3 col-md-6 col-12">
+          <div class="single-footer">
+            <h2>Newsletter</h2>
+            <p>Subscribe to receive product updates, healthcare analytics insights, and ML model improvements directly to your inbox.</p>
+            <form action="mail/mail.php" method="get" target="_blank" class="newsletter-inner">
+              <input name="email" placeholder="Email Address" class="common-input"
+                onfocus="this.placeholder = ''" onblur="this.placeholder = 'Your email address'" required="" type="email">
+              <button class="button"><i class="icofont icofont-paper-plane"></i></button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Copyright -->
+  <div class="copyright">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12 col-md-12 col-12">
+          <div class="copyright-content">
+            <p>© 2025 BI the Way — Powered by Health Intelligence and Human Insight.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+Écrire à Borhene Tlili
