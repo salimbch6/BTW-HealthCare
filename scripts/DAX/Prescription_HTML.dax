@@ -1,0 +1,66 @@
+
+VAR SelectedDiagnosis = SELECTEDVALUE(Diagnosis_All[Diagnosis])
+VAR Patients =
+    CALCULATETABLE(
+        VALUES(Dim_Patient[Code_Patient]),
+        Diagnosis_All[Diagnosis] = SelectedDiagnosis
+    )
+
+-- Distinct medications
+VAR Drugs =
+    CALCULATETABLE(
+        SUMMARIZE(
+            Dim_Traitement,
+            Dim_Traitement[drug]
+        ),
+        Dim_Traitement[code_Traitement] IN Patients
+    )
+
+-- Build the HTML body (table rows)
+VAR Body =
+    CONCATENATEX(
+        Drugs,
+        VAR CurrentDrug = [drug]
+        VAR ExampleEntry =
+            CALCULATETABLE(
+                TOPN(
+                    1,
+                    FILTER(
+                        Dim_Traitement,
+                        Dim_Traitement[drug] = CurrentDrug &&
+                        Dim_Traitement[code_Traitement] IN Patients
+                    )
+                ),
+                REMOVEFILTERS(Dim_Traitement)
+            )
+        VAR Dose = MAXX(ExampleEntry, Dim_Traitement[dose_value])
+        VAR Unit = MAXX(ExampleEntry, Dim_Traitement[dose_unit])
+        VAR Route = MAXX(ExampleEntry, Dim_Traitement[route])
+        RETURN
+        "<tr>
+            <td style='padding:6px;border-bottom:1px solid #ccc'>💊 " & CurrentDrug & "</td>
+            <td style='padding:6px;border-bottom:1px solid #ccc'>" & COALESCE(Dose, "-") & " " & COALESCE(Unit, "") & "</td>
+            <td style='padding:6px;border-bottom:1px solid #ccc'>" & COALESCE(Route, "-") & "</td>
+        </tr>",
+        ""
+    )
+
+RETURN
+IF(
+    ISBLANK(SelectedDiagnosis),
+    "<div style='font-family:sans-serif;color:#888'>🧍 Please select a Diagnostic</div>",
+    "<div style='font-family:sans-serif'>
+        <h2 style='color:#2b579a'>🩺 Medical Prescription</h2>
+        <p><strong>Diagnosis:</strong> " & SelectedDiagnosis & "</p>
+        <table style='border-collapse:collapse;width:100%'>
+            <thead>
+                <tr style='background:#eee'>
+                    <th style='text-align:left;padding:6px'>Medication</th>
+                    <th style='text-align:left;padding:6px'>Dose</th>
+                    <th style='text-align:left;padding:6px'>Route</th>
+                </tr>
+            </thead>
+            <tbody>" & Body & "</tbody>
+        </table>
+    </div>"
+)

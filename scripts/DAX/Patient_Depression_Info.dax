@@ -1,0 +1,27 @@
+
+VAR SelectedPatient = SELECTEDVALUE(Dim_Diseases[Patient_fk])
+VAR IsDepressif = 
+    CALCULATE(
+        MAX(Dim_Diseases[HadDepressiveDisorder]),
+        FILTER(
+            Dim_Diseases,
+            Dim_Diseases[Patient_fk] = SelectedPatient
+        )
+    )
+VAR PatientsDepressifs = 
+    CALCULATE(
+        COUNTROWS(Dim_Diseases),
+        Dim_Diseases[HadDepressiveDisorder] = 1
+    )
+VAR TotalPatients = DISTINCTCOUNT(Dim_Diseases[Patient_fk])
+VAR TauxDepressifs = DIVIDE(PatientsDepressifs, TotalPatients, 0)
+RETURN
+IF(
+    ISBLANK(SelectedPatient),
+    FORMAT(TauxDepressifs, "0%"),
+    IF(
+        IsDepressif = 1,
+        "Depressive",
+        "Not Depressive"
+    )
+)

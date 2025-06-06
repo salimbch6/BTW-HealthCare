@@ -1,0 +1,8 @@
+
+AVERAGEX(
+    FILTER(
+        Dim_Patient_Flux,
+        NOT ISBLANK(Dim_Patient_Flux[Durée_Séjour])
+    ),
+    Dim_Patient_Flux[Durée_Séjour]
+)

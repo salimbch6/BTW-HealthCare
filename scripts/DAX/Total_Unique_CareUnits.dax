@@ -1,0 +1,1 @@
+DISTINCTCOUNT(Dim_CareUnits[CU_name])

@@ -1,0 +1,27 @@
+
+VAR SelectedEmail = SELECTEDVALUE(Dim_Patient[Email])
+RETURN
+    "<div style='
+        font-family: Segoe UI, sans-serif;
+        font-size: 16px;
+        color: #7166F9 ;
+    '>
+        <strong style='
+            color: 7166F9 ;
+            margin-right: 8px;
+        '>Email :</strong>" & 
+        IF(
+            ISBLANK(SelectedEmail),
+            "",
+            "<span style='
+                background-color: #eef5ff;
+                color: #0078d4;
+                padding: 6px 12px;
+                border-radius: 20px;
+                font-weight: 600;
+                font-size: 14px;
+                border: 1px solid #d0e6fa;
+                display: inline-block;
+            '>✉️ " & SelectedEmail & "</span>"
+        ) & 
+    "</div>"

@@ -1,0 +1,7 @@
+
+IF(
+    ISFILTERED(Dim_Patient[Patient_pk]),
+    "",  // Nothing if a patient is selected
+    "<img src='https://i.postimg.cc/fW6pFjPn/death-rate.png' 
+        style='width: 50px; margin: auto; display: block;' />"
+)

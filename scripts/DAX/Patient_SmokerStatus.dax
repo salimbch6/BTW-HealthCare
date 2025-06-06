@@ -1,0 +1,15 @@
+
+VAR SmokerStatus = SELECTEDVALUE(Dim_Patient[SmokerStatus])
+RETURN
+IF(
+    ISBLANK(SmokerStatus),
+    "🧍Please Select a patient",
+    SWITCH(
+        SmokerStatus,
+        "Never", "🚭 Never smoked",
+        "Former", "🚬 Former smoker",
+        "Current - Daily", "🔥 Daily smoker",
+        "Current - Some days", "🔥 Occasional smoker",
+        "Unknown"
+    )
+)

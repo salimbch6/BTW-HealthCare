@@ -1,0 +1,6 @@
+
+VAR CountVal =
+    CALCULATE(
+        COUNT('Fact_Rentabilité_clinique'[Reclamation_fk])
+    )
+RETURN IF(ISBLANK(CountVal), 0, CountVal)

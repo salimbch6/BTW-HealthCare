@@ -1,0 +1,2 @@
+
+AVERAGE('Fact_Performance_soins_médicaux'[severity_score])

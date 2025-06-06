@@ -1,0 +1,5 @@
+
+DIVIDE(
+    [Total Costs],
+    DISTINCTCOUNT('Fact_Rentabilité_clinique'[Patient_fk])
+)

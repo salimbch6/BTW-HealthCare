@@ -1,0 +1,68 @@
+
+VAR Summary =
+    ADDCOLUMNS(
+        SUMMARIZE(
+            Dim_Patient_Flux,
+            Dim_Patient_Flux[prev_careunit],
+            Dim_Patient_Flux[eventtype],
+            Dim_Patient_Flux[curr_careunit]
+        ),
+        "Flux", CALCULATE(DISTINCTCOUNT(Dim_Patient_Flux[Patient_flux_pk]))
+    )
+
+VAR AllRows =
+    CONCATENATEX(
+        Summary,
+        VAR prevCU = [prev_careunit]
+        VAR currCU = [curr_careunit]
+        VAR evt = LOWER([eventtype])
+
+        // Dynamic label
+        VAR EventLabel =
+            SWITCH(
+                TRUE(),
+                evt = "admit", "➕ Admit to <b style='color:#0078d4'>" & currCU & "</b>",
+                evt = "discharge", "✅ Discharge from <b style='color:#ff5c5c'>" & prevCU & "</b>",
+                evt = "transfer", "🔄 Transfer from <b>" & prevCU & "</b> → <b style='color:#28a745'>" & currCU & "</b>",
+                "🔄 " & UPPER(evt)
+            )
+
+        VAR patientNames =
+            CALCULATETABLE(
+                VALUES(Dim_Patient[Nom Complet]),
+                FILTER(
+                    Dim_Patient_Flux,
+                    Dim_Patient_Flux[prev_careunit] = prevCU &&
+                    Dim_Patient_Flux[curr_careunit] = currCU &&
+                    Dim_Patient_Flux[eventtype] = [eventtype]
+                )
+            )
+
+        VAR previewList = CONCATENATEX(patientNames, [Nom Complet], ", ", [Nom Complet], ASC)
+
+        RETURN
+        "
+        <div style='
+            background: linear-gradient(to right, #f9fafe, #e9f2ff);
+            border-radius: 12px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+            padding: 14px 18px;
+            margin-bottom: 12px;
+            font-family: Segoe UI, sans-serif;
+        '>
+            <div style='font-size:15px; font-weight:600; margin-bottom:4px; color:#333;'>
+                " & EventLabel & "
+            </div>
+            <div style='color:#555; font-size:16px; margin-bottom:4px;'>
+                👥 Patients: " & LEFT(previewList, 100) & IF(LEN(previewList) > 100, "…", "") & "
+            </div>
+            <div style='font-size:16px; color:#666;'>
+                🧮 Total Flux: <b>" & [Flux] & "</b>
+            </div>
+        </div>
+        ",
+        ""
+    )
+
+RETURN
+    "<div style='max-height:700px; overflow-y:auto; padding-right:10px;'>" & AllRows & "</div>"

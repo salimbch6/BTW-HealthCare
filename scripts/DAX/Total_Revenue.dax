@@ -1,0 +1,1 @@
+SUM('Fact_Rentabilité_clinique'[total_cost])

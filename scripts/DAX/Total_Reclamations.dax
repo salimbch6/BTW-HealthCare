@@ -1,0 +1,1 @@
+DISTINCTCOUNT('Dim_Reclamations'[Reclamation_pk])

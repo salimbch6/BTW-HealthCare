@@ -1,0 +1,3 @@
+
+VAR volume = AVERAGE(Dim_ProstateCancer[Prostate_Volume])
+RETURN FORMAT(volume, "0.0") & " mL"

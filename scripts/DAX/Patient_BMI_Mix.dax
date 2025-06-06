@@ -1,0 +1,23 @@
+
+VAR SelectedPatient = SELECTEDVALUE(Dim_Patient[Code_Patient])
+VAR BMI = 
+    CALCULATE(
+        SELECTEDVALUE('Fact_Performance_soins_médicaux'[BMI]),
+        USERELATIONSHIP('Fact_Performance_soins_médicaux'[Patient_fk], Dim_Patient[Patient_pk])
+    )
+RETURN
+IF(
+    ISBLANK(SelectedPatient),
+    "🧍 Please select a patient",
+    "🧮 " & FORMAT(BMI, "0.0") & " → " & 
+    SWITCH(
+        TRUE(),
+        ISBLANK(BMI), "Not available",
+        BMI < 18.5, "🟡 Underweight",
+        BMI < 25, "✅ Normal",
+        BMI < 30, "🟠 Overweight",
+        BMI < 35, "🔴 Moderate obesity",
+        BMI < 40, "🔴 Severe obesity",
+        "⚠️ Morbid obesity"
+    )
+)

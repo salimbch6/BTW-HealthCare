@@ -1,0 +1,1 @@
+AVERAGEX(VALUES('Fact_Rentabilité_clinique'[CareUnit_fk]), CALCULATE(AVERAGE('Fact_Rentabilité_clinique'[length_of_stay])))

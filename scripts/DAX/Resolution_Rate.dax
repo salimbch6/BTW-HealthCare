@@ -1,0 +1,5 @@
+
+DIVIDE(
+    [Resolved Reclamations], 
+    [Total Reclamations]
+)

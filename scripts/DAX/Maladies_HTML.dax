@@ -1,0 +1,46 @@
+
+VAR Patient = SELECTEDVALUE(Dim_Diseases[Patient_fk])
+
+VAR BlindOrVisionDiff = IF(SELECTEDVALUE(Dim_Diseases[BlindOrVisionDifficulty]) = 1, "<div class='badge'>👁️ Vision problem</div>", "")
+VAR DeafOrHardOfHearing = IF(SELECTEDVALUE(Dim_Diseases[DeafOrHardOfHearing]) = 1, "<div class='badge'>🦻 Hearing difficulty</div>", "")
+VAR Stroke = IF(SELECTEDVALUE(Dim_Diseases[HadStroke]) = 1, "<div class='badge'>🧠 Stroke</div>", "")
+VAR Angina = IF(SELECTEDVALUE(Dim_Diseases[HadAngina]) = 1, "<div class='badge'>❤️ Angina</div>", "")
+VAR Arthritis = IF(SELECTEDVALUE(Dim_Diseases[HadArthritis]) = 1, "<div class='badge'>🦴 Arthritis</div>", "")
+VAR Asthma = IF(SELECTEDVALUE(Dim_Diseases[HadAsthma]) = 1, "<div class='badge'>💨 Asthma</div>", "")
+VAR COPD = IF(SELECTEDVALUE(Dim_Diseases[HadCOPD]) = 1, "<div class='badge'>🫁 COPD</div>", "")
+VAR Depression = IF(SELECTEDVALUE(Dim_Diseases[HadDepressiveDisorder]) = 1, "<div class='badge'>😞 Depression</div>", "")
+VAR Diabetes = IF(SELECTEDVALUE(Dim_Diseases[HadDiabetes]) = 1, "<div class='badge'>🩸 Diabetes</div>", "")
+VAR Kidney = IF(SELECTEDVALUE(Dim_Diseases[HadKidneyDisease]) = 1, "<div class='badge'>🧬 Kidney disease</div>", "")
+VAR SkinCancer = IF(SELECTEDVALUE(Dim_Diseases[HadSkinCancer]) = 1, "<div class='badge'>🧪 Skin cancer</div>", "")
+VAR HIV = IF(SELECTEDVALUE(Dim_Diseases[HIVTesting]) = 1, "<div class='badge'>🧬 HIV positive</div>", "")
+VAR Covid = IF(SELECTEDVALUE(Dim_Diseases[CovidPos]) = 1, "<div class='badge'>🦠 Covid-19</div>", "")
+VAR Flu = IF(SELECTEDVALUE(Dim_Diseases[FluVaxLast12]) = 1, "<div class='badge'>💉 Flu vaccine</div>", "")
+VAR HighRisk = IF(SELECTEDVALUE(Dim_Diseases[HighRiskLastYear]) = 1, "<div class='badge'>⚠️ High risk</div>", "")
+VAR Pneumo = IF(SELECTEDVALUE(Dim_Diseases[PneumoVaxEver]) = 1, "<div class='badge'>🛡️ Pneumonia vaccine</div>", "")
+VAR Tetanus = IF(SELECTEDVALUE(Dim_Diseases[TetanusLast10Tdap]) = 1, "<div class='badge'>💉 Tetanus vaccine</div>", "")
+VAR Walking = IF(SELECTEDVALUE(Dim_Diseases[DifficultyWalking]) = 1, "<div class='badge'>🚶 Difficulty walking</div>", "")
+VAR Bathing = IF(SELECTEDVALUE(Dim_Diseases[DifficultyDressingBathing]) = 1, "<div class='badge'>🛁 Dressing/bathing</div>", "")
+VAR Errands = IF(SELECTEDVALUE(Dim_Diseases[DifficultyErrands]) = 1, "<div class='badge'>🛒 Difficulty with errands</div>", "")
+VAR Concentrating = IF(SELECTEDVALUE(Dim_Diseases[DifficultyConcentrating]) = 1, "<div class='badge'>🧠 Trouble concentrating</div>", "")
+VAR Chest = IF(SELECTEDVALUE(Dim_Diseases[ChestScan]) = 1, "<div class='badge'>🫀 Chest pain</div>", "")
+
+VAR ContentHTML =
+    BlindOrVisionDiff & DeafOrHardOfHearing & Stroke & Angina & Arthritis &
+    Asthma & COPD & Depression & Diabetes & Kidney & SkinCancer & HIV &
+    Covid & Flu & HighRisk & Pneumo & Tetanus & Walking & Bathing &
+    Errands & Concentrating & Chest
+
+RETURN
+IF(
+    ISBLANK(Patient),
+    "<h3>👤 Please select a patient</h3>",
+    IF(
+        LEN(ContentHTML) = 0,
+        "<div class='badge green'>🟢 No diseases</div>",
+        "<style>
+        .badge { background:#f0f0f0;padding:6px 10px;border-radius:10px;margin:4px;display:inline-block;font-size:14px;}
+        .green { background:#e6ffe6;color:green;font-weight:bold; }
+        </style>
+        <h3>🩺 Patient diseases</h3>" & ContentHTML
+    )
+)
