@@ -17,9 +17,12 @@ It integrates **Power BI dashboards**, **Python analytics notebooks**, and **pre
 
 ## 📸 Dashboard Preview
 
+## 📸 Dashboard Preview
+
 <p align="center">
-  <img src="img/494577553_4002720953322990_4439281894365259617_n.png" width="700" alt="Dashboard Preview 1" />
+  <img src="./img/494577553_4002720953322990_4439281894365259617_n.png" width="700" alt="Dashboard Preview 1" />
 </p>
+
 
 <p align="center">
   <img src="img/dashboard2.png" width="700" alt="Dashboard Preview 2" />
