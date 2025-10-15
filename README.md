@@ -15,4 +15,12 @@ It integrates **Power BI dashboards**, **Python analytics notebooks**, and **pre
 
 ---
 
-## 📂 Repository Structure
+## 📸 Dashboard Preview
+
+<p align="center">
+  <img src="img/dashboard1.png" width="700" alt="Dashboard Preview 1" />
+</p>
+
+<p align="center">
+  <img src="img/dashboard2.png" width="700" alt="Dashboard Preview 2" />
+</p>
