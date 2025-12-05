@@ -11,7 +11,7 @@ It integrates **Power BI dashboards**, **Python analytics notebooks**, and **pre
 - 🤖 Predictive modeling for patient stay duration and resource forecasting
 - 📊 Interactive Power BI dashboard with KPIs and drill-down capabilities
 - 🔄 DAX scripts for dynamic measures and time intelligence
-- 🌐 (Optional) Web interface/API for deployment (if `src/` is a Flask/Node app)
+- 🌐 Web interface/API for deployment 
 
 ---
 
